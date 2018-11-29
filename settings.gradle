@@ -1,0 +1,1 @@
+include ':HostApp', ':sharelibrary','plugin1','plugin2'

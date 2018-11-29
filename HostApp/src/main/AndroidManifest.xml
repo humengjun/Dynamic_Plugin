@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hmj.demo.plugin_dynamic_demo">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".HostApplication"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".load_resource.ResourceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 占位组件 -->
+        <activity android:name=".StubActivity" />
+
+        <service android:name=".hook_service.StubService1" />
+        <service android:name=".hook_service.StubService2" />
+        <service android:name=".hook_service.StubService3" />
+        <service android:name=".hook_service.StubService4" />
+        <service android:name=".hook_service.StubService5" />
+        <service android:name=".hook_service.StubService6" />
+        <service android:name=".hook_service.StubService7" />
+        <service android:name=".hook_service.StubService8" />
+        <service android:name=".hook_service.StubService9" />
+        <service android:name=".hook_service.StubService10" />
+
+        <provider
+            android:name=".hook_content_provider.StubContentProvider"
+            android:authorities="host"
+            android:exported="true" />
+        <!-- 占位组件 -->
+    </application>
+
+</manifest>

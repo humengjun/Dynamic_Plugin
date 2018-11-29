@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '27.0.3'
+
+
+    defaultConfig {
+        applicationId "com.hmj.demo.plugin2"
+        minSdkVersion 23
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+//    applicationVariants.all { variant ->
+//        variant.outputs.all { output ->
+//            def fileName = "plugin2.apk"
+//            def outFile = output.outputFile
+//            if (outFile != null && outFile.name.endsWith('.apk')) {
+//                outputFileName = fileName  //  output.outputFile 改为 outputFileName
+//            }
+//            println("$buildDir/outputs/apk/")
+//            println("$rootDir/HostApp/src/main/assets")
+//
+//            copy {
+//                from "$buildDir/outputs/apk/release/plugin2.apk"
+//                into "$rootDir/HostApp/src/main/assets"
+//            }
+//        }
+//    }
+
+    assemble.doLast {
+        android.applicationVariants.all { variant ->
+            // Copy Release artifact to HostApp's assets and rename
+            if (variant.name == "release") {
+                variant.outputs.each { output ->
+                    File originFile = output.outputFile
+                    println originFile.absolutePath
+                    copy {
+                        from originFile
+                        into "$rootDir/HostApp/src/main/assets"
+                        rename(originFile.name, "plugin2.apk")
+                    }
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:25.2.0'
+    testImplementation 'junit:junit:4.12'
+    implementation project(':sharelibrary')
+}

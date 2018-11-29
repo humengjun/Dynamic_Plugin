@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hmj.demo.plugin2">
+
+    <application android:allowBackup="true">
+        <receiver
+            android:name=".PluginReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hmj.demo.plugin2.receiver" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name=".PluginProvider"
+            android:authorities="plugin2"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+</manifest>
