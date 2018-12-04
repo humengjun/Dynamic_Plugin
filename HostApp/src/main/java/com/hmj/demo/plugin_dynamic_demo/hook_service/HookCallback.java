@@ -26,9 +26,10 @@ public class HookCallback implements Handler.Callback {
             case 100:
                 handleLaunchActivity(msg);
                 break;
-            case 114:
-                handleCreateService(msg);
-                break;
+            //基于动态Hook的Service插件化方案
+//            case 114:
+//                handleCreateService(msg);
+//                break;
         }
         mBase.handleMessage(msg);
         return true;

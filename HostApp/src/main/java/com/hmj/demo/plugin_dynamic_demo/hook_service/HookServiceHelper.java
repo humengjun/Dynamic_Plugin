@@ -2,8 +2,11 @@ package com.hmj.demo.plugin_dynamic_demo.hook_service;
 
 import android.os.Handler;
 
+import com.hmj.demo.sharelibrary.helper.PluginHelper;
+import com.hmj.demo.sharelibrary.helper.PluginItem;
 import com.hmj.demo.sharelibrary.helper.RefInvoke;
 
+import java.io.File;
 import java.lang.reflect.Proxy;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -18,7 +21,17 @@ public class HookServiceHelper {
      * 外观模式
      * 对所有service进行hook
      */
-    public static void initServiceHook() throws ClassNotFoundException {
+    public static void initServiceHook() throws Exception {
+        //基于动静结合的Service插件化方案
+        for (PluginItem item: PluginHelper.plugins) {
+            // 解析插件中的Service组件
+            ServiceManager.getInstance().preLoadServices(new File(item.getPluginPath()));
+
+        }
+        hookActivityManagerNative();
+
+
+        //基于动态Hook的Service插件化方案
         stubServiceClasses.add(StubService1.class);
         stubServiceClasses.add(StubService2.class);
         stubServiceClasses.add(StubService3.class);
@@ -29,8 +42,6 @@ public class HookServiceHelper {
         stubServiceClasses.add(StubService8.class);
         stubServiceClasses.add(StubService9.class);
         stubServiceClasses.add(StubService10.class);
-
-        hookActivityManagerNative();
         hookActivityThread();
     }
 

@@ -9,7 +9,7 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".load_resource.ResourceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +37,10 @@
             android:authorities="host"
             android:exported="true" />
         <!-- 占位组件 -->
+        <service
+            android:name=".hook_service.ProxyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

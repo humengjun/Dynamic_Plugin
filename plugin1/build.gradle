@@ -25,39 +25,39 @@ android {
         abortOnError false
     }
 
-//    applicationVariants.all { variant ->
-//        variant.outputs.all { output ->
-//            def fileName = "plugin1.apk"
-//            def outFile = output.outputFile
-//            if (outFile != null && outFile.name.endsWith('.apk')) {
-//                outputFileName = fileName  //  output.outputFile 改为 outputFileName
-//            }
-//            println("$buildDir/outputs/apk/")
-//            println("$rootDir/HostApp/src/main/assets")
-//
-//            copy {
-//                from "$buildDir/outputs/apk/release/plugin1.apk"
-//                into "$rootDir/HostApp/src/main/assets"
-//            }
-//        }
-//    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def fileName = "plugin1.apk"
+            def outFile = output.outputFile
+            if (outFile != null && outFile.name.endsWith('.apk')) {
+                outputFileName = fileName  //  output.outputFile 改为 outputFileName
+            }
+            println("$buildDir/outputs/apk/")
+            println("$rootDir/HostApp/src/main/assets")
 
-    assemble.doLast {
-        android.applicationVariants.all { variant ->
-            // Copy Release artifact to HostApp's assets and rename
-            if (variant.name == "release") {
-                variant.outputs.each { output ->
-                    File originFile = output.outputFile
-                    println originFile.absolutePath
-                    copy {
-                        from originFile
-                        into "$rootDir/HostApp/src/main/assets"
-                        rename(originFile.name, "plugin1.apk")
-                    }
-                }
+            copy {
+                from "$buildDir/outputs/apk/release/plugin1.apk"
+                into "$rootDir/HostApp/src/main/assets"
             }
         }
     }
+
+//    assemble.doLast {
+//        android.applicationVariants.all { variant ->
+//            // Copy Release artifact to HostApp's assets and rename
+//            if (variant.name == "release") {
+//                variant.outputs.each { output ->
+//                    File originFile = output.outputFile
+//                    println originFile.absolutePath
+//                    copy {
+//                        from originFile
+//                        into "$rootDir/HostApp/src/main/assets"
+//                        rename(originFile.name, "plugin1.apk")
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 dependencies {

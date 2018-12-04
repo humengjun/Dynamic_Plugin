@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Dynamic_Plugin.iml" filepath="$PROJECT_DIR$/Dynamic_Plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/HostApp/HostApp.iml" filepath="$PROJECT_DIR$/HostApp/HostApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Plugin_Dynamic_Demo.iml" filepath="$PROJECT_DIR$/Plugin_Dynamic_Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin1/plugin1.iml" filepath="$PROJECT_DIR$/plugin1/plugin1.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugin2/plugin2.iml" filepath="$PROJECT_DIR$/plugin2/plugin2.iml" />
       <module fileurl="file://$PROJECT_DIR$/sharelibrary/sharelibrary.iml" filepath="$PROJECT_DIR$/sharelibrary/sharelibrary.iml" />

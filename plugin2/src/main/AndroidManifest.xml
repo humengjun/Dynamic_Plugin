@@ -16,6 +16,8 @@
             android:authorities="plugin2"
             android:enabled="true"
             android:exported="true" />
+        <service android:name=".PluginBindService" />
+        <service android:name=".PluginStartService" />
     </application>
 
 </manifest>
